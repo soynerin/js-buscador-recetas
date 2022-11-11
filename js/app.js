@@ -131,11 +131,21 @@ function initApp() {
                 });
 
                 modalFooter.querySelector('#buttonGuardarReceta').innerHTML = `<i class="fa-solid fa-star"></i> Eliminar Favorito`;
+                mostrarToast('Receta agregada correctamente');
                 return;
             }       
             
             eliminarReceta(receta.idMeal);
             modalFooter.querySelector('#buttonGuardarReceta').innerHTML = `<i class="fa-regular fa-star"></i> Agregar a Favoritos`;
+            mostrarToast('Receta eliminada correctamente');
+        }
+
+        function mostrarToast(mensaje){
+            const toast = document.querySelector('#toast');
+            const toastBody = document.querySelector('#toast .toast-body');
+            toastBody.textContent = mensaje;
+            const toastEl = new bootstrap.Toast(toast);
+            toastEl.show();
         }
 
         function mostrarIngredientes(receta) {
